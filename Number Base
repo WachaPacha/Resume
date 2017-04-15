@@ -1,0 +1,13 @@
+def checkio(str_number, radix):
+    n=0
+    sum=0
+    str_number=str_number[::-1]
+    for leter in str_number:
+        try:
+            leter=int(leter,radix)
+            sum+=leter*(radix**n)
+            n+=1
+        except:
+            return -1
+        
+    return sum
