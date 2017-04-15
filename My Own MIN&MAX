@@ -1,0 +1,36 @@
+def min(*args, **kwargs):
+    key = kwargs.get("key", None)
+    if len(args)==1:
+        args=args[0]
+    else:
+        args=args[:]
+    ans=None
+    for arg in args:
+        if ans is None:
+            ans=arg
+        if key is not None:
+            if key(arg)<key(ans):
+                ans=arg
+        if key is None:
+            if arg<ans:
+                ans=arg
+    return ans
+
+
+def max(*args, **kwargs):
+    key = kwargs.get("key", None)
+    if len(args)==1:
+        args=args[0]
+    else:
+        args=args[:]
+    ans=None
+    for arg in args:
+        if ans is None:
+            ans=arg
+        if key is not None:
+            if key(arg)>key(ans):
+                ans=arg
+        if key is None:
+            if arg>ans:
+                ans=arg
+    return ans
