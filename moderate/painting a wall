@@ -1,0 +1,18 @@
+def checkio(num, data):
+    painted = []
+    for k, i in enumerate(data):
+        painted.append(i[:])
+        painted.sort(key=lambda i: i[0])
+        j = 0
+        for l in range(len(painted) - 1):
+            if painted[j][1] >= painted[j + 1][0]:
+                painted[j][1] = max(painted[j][1], painted[j + 1][1])
+                painted.pop(j + 1)
+            else:
+                j += 1
+        length = 0
+        for l in painted:
+            length += l[1] - l[0] + 1
+        if length >= num:
+            return k + 1
+    return -1
